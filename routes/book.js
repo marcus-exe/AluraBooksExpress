@@ -1,24 +1,21 @@
+//get router from express
 const { Router } = require("express")
 
-const { getBooks, getBook } = require("../controllers/book")
+//get all the controller functions
+const { getBooks, getBook, postBook, patchBook, deleteBook } = require("../controllers/book")
 
+//create a router instance
 const router = Router() 
 
+//here are all the routes
 router.get('/', getBooks)
 
 router.get('/:id', getBook)
 
+router.post('/', postBook)
 
-router.post('/', (req, res)=>{
-    res.send( "You did a post request")
-})
+router.patch('/:id', patchBook)
 
-router.patch('/', (req, res)=>{
-    res.send( "You did a patch request")
-})
-
-router.delete('/', (req, res)=>{
-    res.send( "You did a delete request")
-})
+router.delete('/:id', deleteBook)
 
 module.exports = router 
